@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://mowk6m7rhf14"]
+
+[ext_resource type="Texture2D" uid="uid://cjvwwc11o0ovy" path="res://sprites/bulletRed1_outline.png" id="1_0as6t"]
+[ext_resource type="Script" path="res://actors/projectiles/Projectile.gd" id="1_lbk81"]
+[ext_resource type="Resource" uid="uid://bkeed8467i5re" path="res://actors/projectiles/Bullet.tres" id="2_jgitx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_va2jg"]
+radius = 4.0
+height = 14.0
+
+[node name="Bullet" type="Area2D" groups=["projectiles"]]
+script = ExtResource("1_lbk81")
+Data = ExtResource("2_jgitx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0as6t")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_va2jg")

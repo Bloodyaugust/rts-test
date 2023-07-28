@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpk7afg12cteg"]
+
+[ext_resource type="Texture2D" uid="uid://d2b4dtqbrh37a" path="res://sprites/specialBarrel1_outline.png" id="1_llttc"]
+[ext_resource type="Script" path="res://actors/weapons/Weapon.gd" id="1_xijs7"]
+[ext_resource type="PackedScene" uid="uid://mowk6m7rhf14" path="res://actors/projectiles/Bullet.tscn" id="2_ambtq"]
+[ext_resource type="Resource" uid="uid://ipipnrhy836f" path="res://actors/weapons/Cannon.tres" id="2_psjue"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jntf6"]
+radius = 250.0
+
+[node name="Cannon" type="Node2D" groups=["weapons"]]
+script = ExtResource("1_xijs7")
+Data = ExtResource("2_psjue")
+ProjectileScene = ExtResource("2_ambtq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_llttc")
+
+[node name="RangeBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeBox"]
+shape = SubResource("CircleShape2D_jntf6")

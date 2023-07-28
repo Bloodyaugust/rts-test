@@ -1,17 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfjaqu2i4i63i"]
+[gd_scene load_steps=13 format=3 uid="uid://bfjaqu2i4i63i"]
 
 [ext_resource type="Script" path="res://views/FPS.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://dngu6lih2xxlo" path="res://actors/Player.tscn" id="1_4pt6e"]
 [ext_resource type="Texture2D" uid="uid://4typrc2p2rra" path="res://icon.png" id="2"]
 [ext_resource type="Theme" uid="uid://co811ue55i33m" path="res://resources/base_theme.tres" id="2_1ffbx"]
 [ext_resource type="Script" path="res://views/MainMenu.gd" id="4"]
 [ext_resource type="PackedScene" path="res://lib/BetterCam.tscn" id="5"]
 [ext_resource type="Script" path="res://views/Splash.gd" id="6"]
 [ext_resource type="Script" path="res://views/About.gd" id="7_xk6j8"]
+[ext_resource type="PackedScene" uid="uid://da4rnk20go8jl" path="res://actors/units/Tank.tscn" id="8_hq8jo"]
+[ext_resource type="Texture2D" uid="uid://dkimonlty5y4c" path="res://sprites/tileGrass1.png" id="9_e4e6w"]
+[ext_resource type="Script" path="res://scripts/controllers/UnitController.gd" id="10_8r6jm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vtbga"]
+texture = ExtResource("9_e4e6w")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bme2v"]
+tile_size = Vector2i(64, 64)
+navigation_layer_0/layers = 1
+sources/1 = SubResource("TileSetAtlasSource_vtbga")
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("1_4pt6e")]
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
 
@@ -127,3 +137,18 @@ text = "Main Menu"
 key_movement = false
 mouse_drag = false
 zoom_max = 1.0
+
+[node name="TileMap" type="TileMap" parent="." groups=["map"]]
+tile_set = SubResource("TileSet_bme2v")
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 1, 0, 0, 1, 0, -131077, 1, 0, -65541, 1, 0, -5, 1, 0, 65531, 1, 0, 131067, 1, 0, 196603, 1, 0, -131076, 1, 0, -65540, 1, 0, -4, 1, 0, 65532, 1, 0, 131068, 1, 0, 196604, 1, 0, -131075, 1, 0, -65539, 1, 0, -3, 1, 0, 65533, 1, 0, 131069, 1, 0, 196605, 1, 0, -131074, 1, 0, -65538, 1, 0, -2, 1, 0, 65534, 1, 0, 131070, 1, 0, 196606, 1, 0, -131073, 1, 0, -65537, 1, 0, -1, 1, 0, 65535, 1, 0, 131071, 1, 0, 196607, 1, 0, -196608, 1, 0, -131072, 1, 0, -65536, 1, 0, 131072, 1, 0, -196607, 1, 0, -131071, 1, 0, -65535, 1, 0, 1, 1, 0, 65537, 1, 0, 131073, 1, 0, -196606, 1, 0, -131070, 1, 0, -65534, 1, 0, 2, 1, 0, 65538, 1, 0, 131074, 1, 0, -196605, 1, 0, -131069, 1, 0, -65533, 1, 0, 3, 1, 0, 65539, 1, 0, 131075, 1, 0, -196604, 1, 0, -131068, 1, 0, -65532, 1, 0, 4, 1, 0, 65540, 1, 0, 131076, 1, 0, -196603, 1, 0, -131067, 1, 0, -65531, 1, 0, 5, 1, 0, 65541, 1, 0, 131077, 1, 0)
+
+[node name="Tank" parent="." instance=ExtResource("8_hq8jo")]
+position = Vector2(-272, 148)
+
+[node name="Tank2" parent="." instance=ExtResource("8_hq8jo")]
+position = Vector2(326, -141)
+Team = 1
+
+[node name="UnitController" type="Node2D" parent="."]
+script = ExtResource("10_8r6jm")

@@ -8,6 +8,7 @@ var persistent_store:Resource
 var state: Dictionary = {
   "client_view": ViewController.CLIENT_VIEWS.NONE,
   "game": "",
+  "unit_selection": []
  }
 
 func start_game() -> void:
