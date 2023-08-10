@@ -21,7 +21,9 @@ func _draw():
     draw_arc(Vector2.ZERO, 50.0, 0.0, 2.0 * PI, 32, Color.GREEN, 1.0)
     
     if _move_target:
-      draw_line(Vector2.ZERO, _nav_agent.get_final_position() - global_position, Color.GREEN, 1.0)
+      var _path_positions: Array = Array(_nav_agent.get_current_navigation_path()).map(func(_position): return _position - global_position)
+      
+      draw_polyline(_path_positions, Color.GREEN)
 
 func _on_store_state_changed(state_key: String, substate) -> void:
   match state_key:
