@@ -6,7 +6,7 @@ extends Node2D
 @onready var _range_box: Area2D = %RangeBox
 
 var _potential_targets: Array[Node2D]
-var _target: Node2D
+var _target
 var _time_to_fire: float
 
 func _get_target() -> Node2D:
@@ -23,6 +23,11 @@ func _on_range_box_body_entered(body: Node2D):
 func _on_range_box_body_exited(body: Node2D):
   if body.Team != owner.Team && GDUtil.reference_safe(body):
     _potential_targets.erase(body)
+
+    print("Removing body from potential targets: ", body)
+    if body == _target:
+      _target = null
+      print("Removing body as target: ", body)
 
 func _process(delta):
   if !_target || !GDUtil.reference_safe(_target):
@@ -45,5 +50,6 @@ func _process(delta):
 
 func _ready():
   _range_box.body_entered.connect(_on_range_box_body_entered)
+  _range_box.body_exited.connect(_on_range_box_body_exited)
 
   _time_to_fire = Data.fire_interval
