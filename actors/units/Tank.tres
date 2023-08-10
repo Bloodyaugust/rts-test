@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_vna7e")
-health = 50.0
+health = 3.0
 move_speed = 50.0

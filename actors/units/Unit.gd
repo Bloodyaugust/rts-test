@@ -21,7 +21,7 @@ func _draw():
     draw_arc(Vector2.ZERO, 50.0, 0.0, 2.0 * PI, 32, Color.GREEN, 1.0)
     
     if _move_target:
-      var _path_positions: Array = Array(_nav_agent.get_current_navigation_path()).map(func(_position): return _position - global_position)
+      var _path_positions: Array = Array(_nav_agent.get_current_navigation_path()).map(func(_position): return (_position - global_position).rotated(-rotation))
       
       draw_polyline(_path_positions, Color.GREEN)
 
@@ -36,6 +36,9 @@ func _physics_process(delta):
       _move_target = _nav_agent.get_next_path_position()
       velocity = (_move_target - global_position).normalized() * Data.move_speed
       move_and_slide()
+      
+      var _target_rotation = global_position.angle_to_point(_move_target)
+      rotation = _target_rotation
 
       if _nav_agent.is_navigation_finished():
         _move_target = null
