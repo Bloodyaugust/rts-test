@@ -8,6 +8,7 @@ extends CharacterBody2D
 var _draw_selection: bool
 var _health: float
 var _move_target
+var _safe_velocity
 
 func damage(amount: float) -> void:
   _health -= amount
@@ -30,12 +31,19 @@ func _on_store_state_changed(state_key: String, substate) -> void:
     "unit_selection":
       _draw_selection = self in substate
 
+func _on_safe_velocity_calculated(safe_velocity: Vector2) -> void:
+  _safe_velocity = safe_velocity
+
 func _physics_process(delta):
   if _health > 0:
     if _move_target:
       _move_target = _nav_agent.get_next_path_position()
       velocity = (_move_target - global_position).normalized() * Data.move_speed
+      _nav_agent.velocity = velocity
+      if _safe_velocity:
+        velocity = _safe_velocity.normalized() * Data.move_speed
       move_and_slide()
+      velocity = (_move_target - global_position).normalized() * Data.move_speed
       
       var _target_rotation = global_position.angle_to_point(_move_target)
       rotation = _target_rotation
@@ -45,6 +53,8 @@ func _physics_process(delta):
 
 func _process(delta):
   if _health <= 0:
+    if self in Store.state.unit_selection:
+      Store.state.unit_selection.erase(self)
     queue_free()
     return
 
@@ -52,4 +62,5 @@ func _process(delta):
 
 func _ready():
   Store.state_changed.connect(_on_store_state_changed)
+  _nav_agent.velocity_computed.connect(_on_safe_velocity_calculated)
   _health = Data.health
