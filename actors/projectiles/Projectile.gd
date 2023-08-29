@@ -18,11 +18,11 @@ func _process(delta):
   if _range_traveled >= Data.move_range:
     queue_free()
 
-func _on_hit_box_body_entered(body: Node2D):
-  if body && GDUtil.reference_safe(body) && body.Team != team:
-    body.damage(Data.damage)
+func _on_hit_box_area_entered(area: Area2D):
+  if area && area.has_method("damage") && GDUtil.reference_safe(area) && area.Team != team:
+    area.damage(Data.damage)
     queue_free()
 
 func _ready():
-  body_entered.connect(_on_hit_box_body_entered)
+  area_entered.connect(_on_hit_box_area_entered)
   look_at(target.global_position)

@@ -77,6 +77,10 @@ unit_order={
 
 file_logging/enable_file_logging=true
 
+[physics]
+
+2d/run_on_separate_thread=true
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

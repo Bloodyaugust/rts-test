@@ -18,8 +18,9 @@ func _physics_process(delta):
    _selection_rect.size = _temp_rect.size
    _shape_query_params.shape = _selection_rect
    _shape_query_params.transform = Transform2D(0.0, _temp_rect.get_center())
+   _shape_query_params.collide_with_areas = true
 
-   var _query_results = _physics.intersect_shape(_shape_query_params, 4096).map(func(dict): return dict["collider"])
+   var _query_results = _physics.intersect_shape(_shape_query_params, 4096).map(func(dict): return dict["collider"]).filter(func(collider): return collider.has_method("move"))
    _selection_box_start = null
    _do_selection = false
 

@@ -9,6 +9,7 @@ radius = 4.0
 height = 14.0
 
 [node name="Bullet" type="Area2D" groups=["projectiles"]]
+monitorable = false
 script = ExtResource("1_lbk81")
 Data = ExtResource("2_jgitx")
 

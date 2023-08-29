@@ -16,18 +16,18 @@ func _get_target() -> Node2D:
 
   return null
 
-func _on_range_box_body_entered(body: Node2D):
-  if body.Team != owner.Team && GDUtil.reference_safe(body):
-    _potential_targets.append(body)
+func _on_range_box_area_entered(area: Area2D):
+  if area.has_method("damage") && area.Team != owner.Team && GDUtil.reference_safe(area):
+    _potential_targets.append(area)
 
-func _on_range_box_body_exited(body: Node2D):
-  if body.Team != owner.Team && GDUtil.reference_safe(body):
-    _potential_targets.erase(body)
+func _on_range_box_area_exited(area: Area2D):
+  if area.has_method("damage") && area.Team != owner.Team && GDUtil.reference_safe(area):
+    _potential_targets.erase(area)
 
-    print("Removing body from potential targets: ", body)
-    if body == _target:
+    print("Removing body from potential targets: ", area)
+    if area == _target:
       _target = null
-      print("Removing body as target: ", body)
+      print("Removing body as target: ", area)
 
 func _process(delta):
   if !_target || !GDUtil.reference_safe(_target):
@@ -49,7 +49,7 @@ func _process(delta):
       _time_to_fire = Data.fire_interval
 
 func _ready():
-  _range_box.body_entered.connect(_on_range_box_body_entered)
-  _range_box.body_exited.connect(_on_range_box_body_exited)
+  _range_box.area_entered.connect(_on_range_box_area_entered)
+  _range_box.area_exited.connect(_on_range_box_area_exited)
 
   _time_to_fire = Data.fire_interval
