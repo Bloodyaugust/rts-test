@@ -215,8 +215,22 @@ SpawnInterval = 0.75
 position = Vector2(123, 16)
 
 [node name="Tank2" parent="." instance=ExtResource("8_hq8jo")]
-position = Vector2(26, 12)
-Team = 1
+position = Vector2(-62, 8)
+
+[node name="Tank3" parent="." instance=ExtResource("8_hq8jo")]
+position = Vector2(-11, 87)
+
+[node name="Tank4" parent="." instance=ExtResource("8_hq8jo")]
+position = Vector2(36, 8)
+
+[node name="Tank5" parent="." instance=ExtResource("8_hq8jo")]
+position = Vector2(78, 83)
+
+[node name="Tank6" parent="." instance=ExtResource("8_hq8jo")]
+position = Vector2(-6, -48)
+
+[node name="Tank7" parent="." instance=ExtResource("8_hq8jo")]
+position = Vector2(106, -44)
 
 [node name="Map" type="Node2D" parent="." groups=["map"]]
 y_sort_enabled = true

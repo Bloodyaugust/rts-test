@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_vna7e")
 health = 3.0
-move_speed = 50.0
+move_speed = 150.0
+rotation_speed = 6.283

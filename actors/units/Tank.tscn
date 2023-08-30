@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://da4rnk20go8jl"]
+[gd_scene load_steps=7 format=3 uid="uid://da4rnk20go8jl"]
 
 [ext_resource type="Script" path="res://actors/units/Unit.gd" id="1_6u874"]
 [ext_resource type="Texture2D" uid="uid://cuabltr71mr6a" path="res://sprites/tankBody_huge.png" id="1_ux0g7"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m06xe"]
 radius = 34.0588
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b88vd"]
+radius = 125.0
 
 [node name="Tank" type="Area2D" groups=["units"]]
 monitoring = false
@@ -20,3 +23,11 @@ texture = ExtResource("1_ux0g7")
 shape = SubResource("CircleShape2D_m06xe")
 
 [node name="Cannon" parent="." instance=ExtResource("2_eoqf1")]
+
+[node name="SwarmArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwarmArea"]
+shape = SubResource("CircleShape2D_b88vd")
