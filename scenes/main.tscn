@@ -138,6 +138,7 @@ layout_mode = 2
 text = "Main Menu"
 
 [node name="BetterCam" parent="." instance=ExtResource("5")]
+zoom = Vector2(0.45, 0.45)
 zoom_min = 0.25
 zoom_max = 1.0
 
@@ -149,6 +150,7 @@ position = Vector2(265, 272)
 MoveTarget = NodePath("../SpawnerTarget")
 Team = 1
 UnitScene = ExtResource("8_hq8jo")
+SpawnEnabled = true
 SpawnInterval = 0.75
 
 [node name="UnitSpawner3" parent="." node_paths=PackedStringArray("MoveTarget") instance=ExtResource("11_13k2m")]
@@ -156,6 +158,7 @@ position = Vector2(585, -372)
 MoveTarget = NodePath("../SpawnerTarget")
 Team = 1
 UnitScene = ExtResource("8_hq8jo")
+SpawnEnabled = true
 SpawnInterval = 0.75
 
 [node name="UnitSpawner4" parent="." node_paths=PackedStringArray("MoveTarget") instance=ExtResource("11_13k2m")]
@@ -163,6 +166,7 @@ position = Vector2(837, 219)
 MoveTarget = NodePath("../SpawnerTarget")
 Team = 1
 UnitScene = ExtResource("8_hq8jo")
+SpawnEnabled = true
 SpawnInterval = 0.75
 
 [node name="UnitSpawner5" parent="." node_paths=PackedStringArray("MoveTarget") instance=ExtResource("11_13k2m")]
@@ -170,6 +174,7 @@ position = Vector2(127, 842)
 MoveTarget = NodePath("../SpawnerTarget")
 Team = 1
 UnitScene = ExtResource("8_hq8jo")
+SpawnEnabled = true
 SpawnInterval = 0.75
 
 [node name="UnitSpawner6" parent="." node_paths=PackedStringArray("MoveTarget") instance=ExtResource("11_13k2m")]
@@ -177,36 +182,42 @@ position = Vector2(295, -682)
 MoveTarget = NodePath("../SpawnerTarget")
 Team = 1
 UnitScene = ExtResource("8_hq8jo")
+SpawnEnabled = true
 SpawnInterval = 0.75
 
 [node name="UnitSpawner2" parent="." node_paths=PackedStringArray("MoveTarget") instance=ExtResource("11_13k2m")]
 position = Vector2(-271, -256)
 MoveTarget = NodePath("../SpawnerTarget")
 UnitScene = ExtResource("8_hq8jo")
+SpawnEnabled = true
 SpawnInterval = 0.75
 
 [node name="UnitSpawner7" parent="." node_paths=PackedStringArray("MoveTarget") instance=ExtResource("11_13k2m")]
 position = Vector2(-1199, 810)
 MoveTarget = NodePath("../SpawnerTarget")
 UnitScene = ExtResource("8_hq8jo")
+SpawnEnabled = true
 SpawnInterval = 0.75
 
 [node name="UnitSpawner8" parent="." node_paths=PackedStringArray("MoveTarget") instance=ExtResource("11_13k2m")]
 position = Vector2(-657, 710)
 MoveTarget = NodePath("../SpawnerTarget")
 UnitScene = ExtResource("8_hq8jo")
+SpawnEnabled = true
 SpawnInterval = 0.75
 
 [node name="UnitSpawner9" parent="." node_paths=PackedStringArray("MoveTarget") instance=ExtResource("11_13k2m")]
 position = Vector2(-1013, 193)
 MoveTarget = NodePath("../SpawnerTarget")
 UnitScene = ExtResource("8_hq8jo")
+SpawnEnabled = true
 SpawnInterval = 0.75
 
 [node name="UnitSpawner10" parent="." node_paths=PackedStringArray("MoveTarget") instance=ExtResource("11_13k2m")]
 position = Vector2(-973, -453)
 MoveTarget = NodePath("../SpawnerTarget")
 UnitScene = ExtResource("8_hq8jo")
+SpawnEnabled = true
 SpawnInterval = 0.75
 
 [node name="SpawnerTarget" type="Node2D" parent="."]

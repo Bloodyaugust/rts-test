@@ -1,6 +1,6 @@
 extends Node2D
 
-const MAX_NUM_UNITS: int = 200
+const MAX_NUM_UNITS: int = 150
 
 @export var MoveTarget: Node2D
 @export var Team: int
